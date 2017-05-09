@@ -14,7 +14,7 @@
 * counterName - 返回的柜台名称
 * loaction - 返回的经纬度
 
-### 实例化对象后台
+### 实例化对象
 <pre>
 new ThreeLinkAge({  data:result.data,  provice:aoProvice,  city:aoCity,  district:aoDistrict,  location:true,  updateCounter: function(list){  },  success:function(data){  },
   updateProvice:function(data){
