@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=drawing,geometry,autocomplete,convertor"></script>
+
+
+</head>
+<body>
+  <div id="allmap"></div>
+
+  <select id="provice">
+    <option>请选择省份</option>
+  </select>
+
+  <select id="city">
+    <option>请选择城市</option>
+  </select>
+  
+    <select id="district">
+    <option>请选择柜台</option>
+  </select>
+
+  <div style="padding-top: 20px;">
+    <select id="aprovice">
+    <option>请选择省份</option>
+  </select>
+
+  <select id="acity">
+    <option>请选择城市</option>
+  </select>
+  
+    <select id="adistrict">
+    <option>请选择柜台</option>
+  </select>
+  </div>
+  <script type="text/javascript" src="ThreeLinkAge_tengxun.js" id="Jlocation"></script>
+  <script type="text/javascript">
+  function Query(e){ //获取单个元素
+      return document.querySelector(e);
+    } 
+    var oProvice = Query('#provice');
+    var oCity = Query('#city');
+    var oDistrict=Query('#district');
+
+     var aoProvice = Query('#aprovice');
+    var aoCity = Query('#acity');
+    var aoDistrict=Query('#adistrict');
+    // var map = new BMap.Map("allmap");
+    $.ajax({
+      url: "http://ccelorealtest.comeyes.net/lastinglove/getCounter",
+      type: "POST",
+      dataType: "JSON",
+      success: function (result) {
+        console.log("++++++++")
+        console.log(result)
+        console.log("++++++++")
+        // up.init({
+        //   data:result.data,
+        //   provice:oProvice,
+        //   city:oCity,
+        //   district:oDistrict
+        //   location:true
+        // })
+        // console.log(result.data);
+        new ThreeLinkAge({
+          data:result.data,
+          provice:oProvice,
+          city:oCity,
+          district:oDistrict,
+          location:true,
+          updateCounter: function(list){
+            //district数据没有传，返回当前市的所有柜台
+            // console.log("list=======")
+            // console.log(list)
+            // console.log("list=======")
+          },
+          success:function(data){
+            //定位成功回调
+            // console.log(data.data)
+          },
+          updateProvice:function(data){
+
+          }
+        })
+
+        // setTimeout(function(){
+        // new ThreeLinkAge({
+        //   data:result.data,
+        //   provice:aoProvice,
+        //   city:aoCity,
+        //   district:aoDistrict,
+        //   location:true,
+        //   updateCounter: function(list){
+        //     console.log("list===========")
+        //     console.log(list)
+        //     console.log("list===========")
+        //   },
+        //   success:function(data){
+        //     console.log(data.data)
+        //   },
+         
+        // })
+        // },2000)
+
+      }
+    })
+  </script>
+</body>
+</html>
