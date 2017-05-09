@@ -5,6 +5,7 @@
 
 2,定位插件
 >ThreeLinkAge_tengxun.js###返回的数据格式![link](https://github.com/haohailong1990/txPosition/blob/master/images/1.png)
+
 ###返回的数据格式参数说明
 * 第一个数组的name代表返回的省名称
 * 第二个数组的name代表返回的市名称
